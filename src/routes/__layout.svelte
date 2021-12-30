@@ -1,28 +1,25 @@
 <script>
-	import Header from '$lib/header/Header.svelte';
+	import { page } from '$app/stores';
 	import '../app.css';
 </script>
-
-<Header />
 
 <main>
 	<slot />
 </main>
 
 <footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<p class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></p>
+	<p class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Organise another pissup</a></p>
 </footer>
 
 <style>
 	main {
-		flex: 1;
+		height: 100%;
+		align-items: center;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
-		box-sizing: border-box;
+		flex-grow: 1;
+		justify-content: center;
 	}
 
 	footer {

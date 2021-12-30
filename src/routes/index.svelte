@@ -1,59 +1,43 @@
 <script context="module">
 	export const prerender = true;
+	import { goto, prefetch } from '$app/navigation';
 </script>
 
 <script>
-	import Counter from '$lib/Counter.svelte';
+	const pissup = {
+		uid: '23jskdje',
+	}
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<h1>Alright pisshead, let's start with your name.</h1>
+<!-- svelte-ignore missing-declaration -->
+<form
+	on:submit|preventDefault={async e => {
+		const formData = new FormData(e.target)
+		const name = formData.get('name')
+		const response = await fetch(
+			'/pissup/create.json',
+			{
+				method: 'POST',
+				body: JSON.stringify({
+					name,
+				}),
+			}
+		)
+		const json = await response.json()
+		goto(`/${json.uid}/you?name=${name}`)
+	}}
+>
+	<input id="name" name="name" placeholder="Sir Guzzlington IV">
+	<button type="submit">ONWARDS</button>
+</form>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	button {
+		background-color: greenyellow;
 	}
 </style>
