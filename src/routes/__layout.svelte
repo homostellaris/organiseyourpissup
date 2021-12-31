@@ -1,16 +1,26 @@
-<script>
-	import { page } from '$app/stores';
+<script context="module">
 	import '../app.css';
+	import Footer from '$lib/Footer.svelte'
+	import { fly } from "svelte/transition"
 </script>
+
+<!-- <script>
+	export let refresh = ""
+</script>
+
+{#key refresh}
+<div
+	in:fly={{ x: -5, duration: 500, delay: 500 }}
+	out:fly={{ x: 5, duration: 500 }}
+>
+</div>
+{/key} -->
 
 <main>
 	<slot />
 </main>
 
-<footer>
-	<p class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></p>
-	<p class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Organise another pissup</a></p>
-</footer>
+<Footer/>
 
 <style>
 	main {
@@ -20,23 +30,5 @@
 		flex-direction: column;
 		flex-grow: 1;
 		justify-content: center;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>

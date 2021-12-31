@@ -1,12 +1,7 @@
 <script context="module">
-	export const prerender = true;
-	import { goto, prefetch } from '$app/navigation';
-</script>
+	import {goto} from '$app/navigation';
 
-<script>
-	const pissup = {
-		uid: '23jskdje',
-	}
+	export const prerender = true;
 </script>
 
 <svelte:head>
@@ -35,6 +30,7 @@
 	<input id="name" name="name" placeholder="Sir Guzzlington IV">
 	<button type="submit">ONWARDS</button>
 </form>
+<!-- TODO: Can I do a sweet transition from this page to the next? -->
 
 <style>
 	button {
