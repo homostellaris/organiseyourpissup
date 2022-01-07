@@ -24,7 +24,7 @@
 			}
 		)
 		const json = await response.json()
-		goto(`/${json.uid}/you?name=${name}`)
+		goto(`/${json.pissupId}/you?name=${name}`)
 	}}
 >
 	<input id="name" name="name" placeholder="Sir Guzzlington IV">

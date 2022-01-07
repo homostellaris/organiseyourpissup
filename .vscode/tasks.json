@@ -1,0 +1,43 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "dev",
+			"dependsOn": ["npm: db", "npm: createFixtures", "npm: dev"],
+			"dependsOrder": "sequence",
+		},
+		{
+			"type": "npm",
+			"script": "createFixtures",
+			"problemMatcher": [],
+			"label": "npm: createFixtures",
+			"detail": "fauna import --path pissup.json"
+		},
+		{
+			"type": "npm",
+			"script": "db",
+			"problemMatcher": {
+				"pattern": {
+					"regexp": ""
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "Starting...",
+					"endsPattern": "Node has initialized the cluster.",
+				}
+			},
+			"label": "npm: db",
+			"detail": "docker run --rm --name faunadb -p 8443:8443 -p 8084:8084 fauna/faunadb",
+			"isBackground": true,
+		},
+		{
+			"type": "npm",
+			"script": "dev",
+			"problemMatcher": [],
+			"label": "npm: dev",
+			"detail": "svelte-kit dev"
+		}
+	]
+}

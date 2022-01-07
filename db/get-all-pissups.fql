@@ -1,0 +1,4 @@
+Map(
+	Paginate(Documents(Collection('pissup'))),
+	Lambda(x => Get(x))
+)

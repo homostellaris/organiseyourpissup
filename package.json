@@ -2,8 +2,11 @@
   "name": "organise-your-pissup",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
     "build": "svelte-kit build",
+    "createFixtures": "fauna import --path db/pissup.json",
+    "dev": "svelte-kit dev",
+    "db": "docker run --rm --name faunadb -p 8443:8443 -p 8084:8084 fauna/faunadb",
+    "getAllPissups": "fauna eval --file db/get-all-pissups.fql | jq",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview"
   },
@@ -18,6 +21,7 @@
     "@fontsource/amatic-sc": "^4.5.0",
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "cookie": "^0.4.1",
+    "faunadb": "^4.4.1"
   }
 }
