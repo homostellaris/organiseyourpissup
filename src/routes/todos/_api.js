@@ -13,7 +13,7 @@ const base = 'https://api.svelte.dev';
 
 export async function api(request, resource, data) {
 	// user must have a cookie set
-	if (!request.locals.userid) {
+	if (!request.locals.userId) {
 		return { status: 401 };
 	}
 

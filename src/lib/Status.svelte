@@ -1,8 +1,13 @@
+<script>
+	import {page} from '$app/stores'
+
+	export let pissup
+	const inviteUrl = `${$page.url.origin}/${$page.params.pissupId}/invite?from=Dan`
+</script>
+
 <header>
-	<p>Share this link with your mates</p>
-	<div>
-		<span>https://lalala.com</span><button>Copy link</button>
-	</div>
+	<p>We're waiting for {pissup.pissheads.length} people to get their arse in gear.</p>
+	<p>Share this link with your mates <span>{inviteUrl}</span><button>Copy link</button></p>
 </header>
 
 <style>

@@ -15,7 +15,7 @@
 		const formData = new FormData(e.target)
 		const name = formData.get('name')
 		const response = await fetch(
-			'/pissup/create.json',
+			'/pissup.json',
 			{
 				method: 'POST',
 				body: JSON.stringify({

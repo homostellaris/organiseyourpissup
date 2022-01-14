@@ -3,7 +3,7 @@ import { api } from './_api';
 // GET /todos.json
 export const get = async (request) => {
 	// request.locals.userid comes from src/hooks.js
-	const response = await api(request, `todos/${request.locals.userid}`);
+	const response = await api(request, `todos/${request.locals.userId}`);
 
 	if (response.status === 404) {
 		// user hasn't created a todo list.
@@ -16,7 +16,7 @@ export const get = async (request) => {
 
 // POST /todos.json
 export const post = async (request) => {
-	const response = await api(request, `todos/${request.locals.userid}`, {
+	const response = await api(request, `todos/${request.locals.userId}`, {
 		// because index.svelte posts a FormData object,
 		// request.body is _also_ a (readonly) FormData
 		// object, which allows us to get form data

@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "ref": {
+        "@ref": {
+          "id": "319985722360594944",
+          "collection": {
+            "@ref": {
+              "id": "pissup",
+              "collection": { "@ref": { "id": "collections" } }
+            }
+          }
+        }
+      },
+      "ts": 1641421015060000,
+      "data": {
+        "pissheads": [
+          { "name": "Dan" },
+          { "name": "Max" },
+          { "name": "Tom" },
+          { "name": "King Daddy Sexy Robo III" },
+          { "name": "Jim" },
+          { "name": "Mike" }
+        ]
+      }
+    },
+    {
+      "ref": {
+        "@ref": {
+          "id": "319985729862107648",
+          "collection": {
+            "@ref": {
+              "id": "pissup",
+              "collection": { "@ref": { "id": "collections" } }
+            }
+          }
+        }
+      },
+      "ts": 1641421022190000,
+      "data": { "pissheads": [{ "name": "hehehe" }] }
+    }
+  ]
+}
