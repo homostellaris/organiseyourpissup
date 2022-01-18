@@ -4,27 +4,18 @@
 * {
 	font-family: 'Amatic SC', cursive;
 	font-size: large;
-}
-
-body {
-	background-color: #f28e1c;
-	min-height: 100vh;
-	box-sizing: border-box;
 	color: white;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
-#svelte {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+code {
+	font-family: monospace;
 }
 
 h1 {
 	font-size: 4.17rem;
-}
-
-div {
-	margin: 1rem;
 }
 
 p {
@@ -33,10 +24,13 @@ p {
 }
 
 button {
+	color: black;
 	margin: 1rem;
 }
 
 input, button {
 	border-radius: 0.2rem;
+	color: black;
+	font-size: 1.69rem;
 	padding: 0.38rem;
 }
