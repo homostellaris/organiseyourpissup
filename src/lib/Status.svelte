@@ -6,8 +6,8 @@
 </script>
 
 <header>
-	<p>We're waiting for {pissup.pissheads.length} people to get their arse in gear.</p>
-	<p>Share this link with your mates <span>{inviteUrl}</span><button>Copy link</button></p>
+	<p>We're waiting for {Object.keys(pissup.pissheads).length} people to get their arse in gear.</p>
+	<button>COPY INVITE LINK</button>
 </header>
 
 <style>

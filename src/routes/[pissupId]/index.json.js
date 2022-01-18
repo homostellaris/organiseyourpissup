@@ -35,12 +35,11 @@ export const post = async (request) => {
 			q.Collection('pissup'),
 			{
 				data: {
-					pissheads: [
-						{
-							id: userId,
+					pissheads: {
+						[userId]: {
 							name: json.name,
 						}
-					],
+					},
 				}
 			}
 		)
@@ -61,27 +60,45 @@ export const put = async (request) => {
 	// TODO: Use FormData instead.
 	const json = JSON.parse(request.body)
 
-	// TODO: Maybe should split out pisshead and user collections
-	// const response = await client.query(
-	// 	q.Update(
-	// 		q.Ref(q.Collection('pissup'), reference),
-	// 		{
-	// 			data: {
-	// 				pissheads: [
-	// 					{
-	// 						id: userId,
-	// 						name: json.name,
-	// 					}
-	// 				],
-	// 			}
-	// 		}
-	// 	)
-	// )
-	// const pissupId = toPissupId(response.ref.id)
+	const response = await client.query(
+		q.Update(
+			q.Ref(q.Collection('pissup'), reference),
+			{
+				data: {
+					pissheads: {
+						[userId]: {
+							dates: json.dates
+						}
+					}
+				}
+			}
+		)
+	)
 
 	return {
-		body: {
-			pissupId
-		},
-	};
+		status: 200,
+	}
+}
+
+export const patch = async (request) => {
+	const {userId} = cookie.parse(request.headers.cookie || '');
+	const pissupId = request.params.pissupId
+	const reference = toDatabaseId(pissupId)
+	// TODO: Use FormData instead.
+	const json = JSON.parse(request.body)
+
+	const response = await client.query(
+		q.Update(
+			q.Ref(q.Collection('pissup'), reference),
+			{
+				data: {
+					decision: '2021-01-06'
+				}
+			}
+		)
+	)
+
+	return {
+		status: 200,
+	}
 }

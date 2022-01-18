@@ -27,7 +27,8 @@
 		goto(`/${json.pissupId}/you?name=${name}`)
 	}}
 >
-	<input id="name" name="name" placeholder="Sir Guzzlington IV">
+	<!-- TODO: Hardcode a few different placeholder names to select at random. -->
+	<input id="name" name="name" placeholder="Sir Guzzlington IV"> 
 	<button type="submit">ONWARDS</button>
 </form>
 <!-- TODO: Can I do a sweet transition from this page to the next? -->

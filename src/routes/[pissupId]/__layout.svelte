@@ -1,6 +1,4 @@
 <script context="module">
-	import Status from '$lib/Status.svelte'
-
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({fetch, params}) {
 		const response = await fetch(
@@ -25,5 +23,4 @@
 	export let pissup
 </script>
 
-<Status {pissup}/>
 <slot/>

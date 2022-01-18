@@ -4,7 +4,7 @@
 </script>
 
 <script>
-	let name = $page.url.searchParams.get('name') || $page.stuff.pissup.pissheads.find(pisshead => pisshead.id === $session.userId).name
+	let name = $page.url.searchParams.get('name') || $page.stuff.pissup.pissheads[$session.userId].name
 </script>
 
 
@@ -17,7 +17,7 @@
 <form
 	on:submit|preventDefault={async e => {
 		const response = await fetch(
-			'/pissup.json',
+			`/${$page.params.pissupId}.json`,
 			{
 				method: 'PUT',
 				body: JSON.stringify({
@@ -25,9 +25,8 @@
 				}),
 			}
 		)
-		const json = await response.json()
 		goto(`/${$page.params.pissupId}/everyone`)
-}}
+	}}
 >
 	<button type="submit">ONWARDS</button>
 </form>
