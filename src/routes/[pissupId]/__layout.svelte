@@ -19,8 +19,4 @@
 	}
 </script>
 
-<script>
-	export let pissup
-</script>
-
 <slot/>
