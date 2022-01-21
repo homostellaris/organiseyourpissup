@@ -1,5 +1,6 @@
 <script context="module">
 	import {goto} from '$app/navigation';
+	import NavButtons from '$lib/NavButtons.svelte'
 
 	export const prerender = true;
 </script>
@@ -28,8 +29,8 @@
 	}}
 >
 	<!-- TODO: Hardcode a few different placeholder names to select at random. -->
-	<input id="name" name="name" placeholder="Sir Guzzlington IV"> 
-	<button type="submit">ONWARDS</button>
+	<input autofocus id="name" name="name" placeholder="Sir Guzzlington IV"> 
+	<NavButtons/>
 </form>
 <!-- TODO: Can I do a sweet transition from this page to the next? -->
 

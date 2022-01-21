@@ -1,6 +1,7 @@
 <script>
 	import {goto} from '$app/navigation'
 	import {page} from '$app/stores'
+	import NavButtons from '$lib/NavButtons.svelte'
 </script>
 
 <h1>Here's everyone's availability, choose a date!</h1>
@@ -19,5 +20,5 @@
 		goto(`/${$page.params.pissupId}/decision`)
 	}}
 >
-	<button type="submit">ONWARDS</button>
+	<NavButtons/>
 </form>

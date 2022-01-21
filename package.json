@@ -9,13 +9,15 @@
     "getAllPissups": "fauna eval --file db/get-all-pissups.fql | jq",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
-    "unit": "npx ava --watch"
+    "unit": "ava --watch",
+    "test:dev": "cypress open"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-netlify": "^1.0.0-next.39",
     "@sveltejs/kit": "next",
     "ava": "^4.0.0",
+    "cypress": "^9.3.1",
     "svelte": "^3.44.0"
   },
   "type": "module",
