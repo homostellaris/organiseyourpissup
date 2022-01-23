@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "build": "svelte-kit build",
-    "createFixtures": "fauna import --path db/pissup.json",
+    "createFixtures": "fauna import --path db/pissup.json --secret secret --domain localhost --scheme http --port 8443",
     "dev": "svelte-kit dev",
-    "db": "docker run --rm --name faunadb -p 8443:8443 -p 8084:8084 fauna/faunadb",
+    "db": "docker run --rm --name faunadb -p 8443:8443 fauna/faunadb",
     "getAllPissups": "fauna eval --file db/get-all-pissups.fql | jq",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
@@ -19,6 +19,7 @@
     "@sveltejs/kit": "next",
     "ava": "^4.0.0",
     "cypress": "^9.3.1",
+    "fauna-shell": "^0.13.0",
     "svelte": "^3.44.0"
   },
   "type": "module",

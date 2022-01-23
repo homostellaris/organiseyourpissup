@@ -5,6 +5,11 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      fauna:
+        image: fauna/faunadb
+        ports:
+          - 8443:8443
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
@@ -13,3 +18,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run unit
+    - run: npm run build
+    - run: npm run createFixtures
+    - name: Cypress
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm run preview
