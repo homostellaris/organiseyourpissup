@@ -33,9 +33,3 @@
 	<NavButtons/>
 </form>
 <!-- TODO: Can I do a sweet transition from this page to the next? -->
-
-<style>
-	button {
-		background-color: greenyellow;
-	}
-</style>
