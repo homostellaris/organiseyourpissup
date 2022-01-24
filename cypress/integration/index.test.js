@@ -11,6 +11,8 @@ it("should work", () => {
 
 	cy.url().should('include', '/everyone')
 	cy.contains("Here's everyone's availability, choose a date!")
+	cy.get('.pisshead').should('have.text', 'Dan')
+	cy.get('.streaming-status').should('have.text', "Started live-streaming")
 	cy.task('updatePissup', {
 		pissheads: {
 			'fakeId': {
@@ -18,6 +20,7 @@ it("should work", () => {
 			}
 		}
 	})
+	cy.get('.pisshead').should('have.text', 'Max')
 	cy.get('.onwards').click()
 
 	cy.url().should('include', '/decision')

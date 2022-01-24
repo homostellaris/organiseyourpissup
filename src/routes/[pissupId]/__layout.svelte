@@ -5,6 +5,7 @@
 			`/${params.pissupId}.json`,
 			{method: 'GET'},
 		)
+
 		const pissup = await response.json()
 
 		return {

@@ -8,11 +8,12 @@
 			"dependsOn": [
 				"npm: db",
 				"npm: createFixtures",
-				"npm: dev"
+				"npm: dev",
+				"npm: test:dev"
 			],
 			"dependsOrder": "sequence",
 			"problemMatcher": []
-			},
+		},
 		{
 			"type": "npm",
 			"script": "createFixtures",
@@ -40,9 +41,26 @@
 		{
 			"type": "npm",
 			"script": "dev",
-			"problemMatcher": [],
+			"problemMatcher": {
+				"pattern": {
+					"regexp": ""
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "SvelteKit",
+					"endsPattern": "http://localhost:3000"
+				}
+			},
 			"label": "npm: dev",
-			"detail": "svelte-kit dev"
+			"detail": "svelte-kit dev",
+			"isBackground": true
+		},
+		{
+			"type": "npm",
+			"script": "test:dev",
+			"problemMatcher": [],
+			"label": "npm: test:dev",
+			"detail": "cypress open"
 		}
 	]
 }

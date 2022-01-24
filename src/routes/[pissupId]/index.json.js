@@ -1,4 +1,4 @@
-import cookie from 'cookie';
+import cookie from 'cookie'
 import faunadb from 'faunadb'
 import {toDatabaseId, toPissupId} from '$lib/id'
 
