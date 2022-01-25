@@ -1,0 +1,20 @@
+If(
+	Exists(Collection('pissup')),
+	'Collection already exists.',
+	CreateCollection({name: 'pissup'})
+)
+
+CreateRole({
+	name: 'pisshead',
+	privileges: {
+		resource: Collection('pissup'),
+		actions: {
+			read: true,
+			write: true,
+		}
+	}
+})
+
+CreateKey({
+	role: Role('pisshead')
+})

@@ -5,10 +5,10 @@ import {toDatabaseId, toPissupId} from '$lib/id'
 const q = faunadb.query
 
 const client = new faunadb.Client({
-	secret: 'secret',
-	domain: 'localhost',
-	port: 8443,
-	scheme: 'http',
+	domain: process.env.FAUNADB_DOMAIN,
+	port: process.env.FAUNADB_PORT,
+	scheme: process.env.FAUNADB_SCHEME,
+	secret: process.env.FAUNADB_SERVER_SECRET,
 })
 
 export const get = async (request) => {

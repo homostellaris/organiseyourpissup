@@ -1,7 +1,7 @@
 <script>
 	import faunadb from 'faunadb'
 	import {goto} from '$app/navigation'
-	import {page} from '$app/stores'
+	import {page, session} from '$app/stores'
 	import NavButtons from '$lib/NavButtons.svelte'
 	import {onMount} from 'svelte'
 	import {toDatabaseId} from '$lib/id'
@@ -10,12 +10,7 @@
 	let pissheads = Object.values($page.stuff.pissup.pissheads)
 
 	onMount(() => {
-		const client = new faunadb.Client({
-			secret: 'secret',
-			domain: 'localhost',
-			port: 8443,
-			scheme: 'http',
-		})
+		const client = new faunadb.Client({...$session.faunadb})
 		const q = faunadb.query
 
 		const databaseId = toDatabaseId($page.params.pissupId)
