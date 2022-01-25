@@ -12,5 +12,5 @@ export function toDatabaseId (pissupId) {
 // TODO: Figure out how the hell this works.
 function convert(value, radix) {
     return [...value.toString()]
-        .reduce((r, v) => r * BigInt(radix) + BigInt(parseInt(v, radix)), 0n);
+        .reduce((r, v) => r * BigInt(radix) + BigInt(parseInt(v, radix)), BigInt(0));
 }

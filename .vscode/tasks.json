@@ -9,7 +9,6 @@
 				"npm: db",
 				"npm: createFixtures",
 				"npm: dev",
-				"npm: test:dev"
 			],
 			"dependsOrder": "sequence",
 			"problemMatcher": []
