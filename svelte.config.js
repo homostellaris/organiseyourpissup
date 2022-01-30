@@ -6,7 +6,15 @@ const config = {
 		adapter: adapter(),
 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
+		target: '#svelte',
+		prerender: {
+			enabled: true,
+			entries: [ // TODO: Find out why this is necessary
+				'*',
+				'/privacy',
+				'/[pissupId]/invite'
+			]
+		}
 	}
 };
 

@@ -7,7 +7,7 @@
 	import {toDatabaseId} from '$lib/id'
 
 	let status = 'Not started'
-	let pissheads = Object.values($page.stuff.pissup.pissheads)
+	let pissheads = []
 
 	onMount(() => {
 		const client = new faunadb.Client({...$session.faunadb})
@@ -23,6 +23,7 @@
 			stream = client.stream.document(docRef)
 				.on('snapshot', snapshot => {
 					console.log('snapshot')
+					pissheads = Object.values(snapshot.data.pissheads)
 				})
 				.on('version', version => {
 					console.log('version')
@@ -42,6 +43,7 @@
 	})
 </script>
 
+<a href="./invite">Invite your mates to this pissup</a>
 <h1>Here's everyone's availability, choose a date!</h1>
 <div class="streaming-status">{status}</div>
 {#each pissheads as pisshead}

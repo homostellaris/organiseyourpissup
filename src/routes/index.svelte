@@ -1,8 +1,8 @@
 <script context="module">
-	import {goto} from '$app/navigation';
+	import {goto, prefetch} from '$app/navigation';
 	import NavButtons from '$lib/NavButtons.svelte'
 
-	export const prerender = true;
+	export const prerender = true
 </script>
 
 <svelte:head>

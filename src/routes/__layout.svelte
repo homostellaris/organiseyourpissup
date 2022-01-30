@@ -1,9 +1,11 @@
 <script context="module">
-  import "../app.css";
-  import Footer from "$lib/Footer.svelte";
+  import "../app.css"
+  import Footer from "$lib/Footer.svelte"
 //   import { fly } from "svelte/transition";
 //   import { bubble } from "svelte/internal";
-  import { onMount } from "svelte";
+  import {onMount} from "svelte"
+
+	export const prerender = true
 </script>
 
 <!-- Credit to Rob M Andrews for his work in this Codepen: https://codepen.io/rob-m-andrews/pen/pvVjNB -->
