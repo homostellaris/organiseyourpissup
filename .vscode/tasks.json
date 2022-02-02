@@ -29,7 +29,7 @@
 				"background": {
 					"activeOnStart": true,
 					"beginsPattern": "Starting...",
-					"endsPattern": "Node has initialized the cluster."
+					"endsPattern": "FaunaDB is ready."
 				}
 			},
 			"label": "DB",

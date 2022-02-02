@@ -2,6 +2,7 @@ import cookie from 'cookie'
 import { v4 as uuid } from '@lukeed/uuid'
 
 export async function handle ({ request, resolve }) {
+	console.log('handle');
 	const cookies = cookie.parse(request.headers.cookie || '')
 	request.locals.userId = cookies.userId || uuid()
 
@@ -17,7 +18,6 @@ export async function handle ({ request, resolve }) {
 		// set a cookie so that we recognise them when they return
 		response.headers['set-cookie'] = cookie.serialize('userId', request.locals.userId, {
 			path: '/',
-			httpOnly: true
 		})
 	}
 
@@ -25,8 +25,8 @@ export async function handle ({ request, resolve }) {
 };
 
 export function getSession (request) {
+	console.log('getSession');
 	const {userId} = cookie.parse(request.headers.cookie || '')
-	console.log(userId)
 	return {
 		userId,
 		faunadb: {

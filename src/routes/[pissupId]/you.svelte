@@ -1,8 +1,9 @@
 <script context="module">
 	import Datepicker from "$lib/Datepicker.svelte"
+	import getUserId from '$lib/getUserId'
 	import {goto} from '$app/navigation'
-	import {page, session} from '$app/stores'
 	import NavButtons from '$lib/NavButtons.svelte'
+	import {page} from '$app/stores'
 
 	/** @type {import('@sveltejs/kit').Load} */
 	export async function load({fetch, params}) {
@@ -26,7 +27,9 @@
 </script>
 
 <script>
-	let user = $page.stuff.pissup.pissheads[$session.userId]
+	// TODO: I think its populating the store at pre-render time which results in undefined userId and then when we client-side navigate to /you it does not hit getSession to update it.
+	const userId = getUserId()
+	let user = $page.stuff.pissup.pissheads[userId]
 	let name = $page.url.searchParams.get('name') || user.name
 	let dates = user.dates || []
 </script>
