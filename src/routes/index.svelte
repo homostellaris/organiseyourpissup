@@ -1,5 +1,5 @@
 <script context="module">
-	import {goto, prefetch} from '$app/navigation';
+	import {goto} from '$app/navigation';
 	import NavButtons from '$lib/NavButtons.svelte'
 
 	export const prerender = true
@@ -25,7 +25,7 @@
 			}
 		)
 		const json = await response.json()
-		goto(`/${json.pissupId}/you?name=${name}`)
+		await goto(`/${json.pissupId}/you?name=${name}`, {replaceState: true})
 	}}
 >
 	<!-- TODO: Hardcode a few different placeholder names to select at random. -->

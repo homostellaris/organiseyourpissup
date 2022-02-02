@@ -25,7 +25,8 @@ export async function handle ({ request, resolve }) {
 };
 
 export function getSession (request) {
-	const {userId} = cookie.parse(request.headers.cookie|| '')
+	const {userId} = cookie.parse(request.headers.cookie || '')
+	console.log(userId)
 	return {
 		userId,
 		faunadb: {
