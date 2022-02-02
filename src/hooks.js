@@ -2,7 +2,6 @@ import cookie from 'cookie'
 import { v4 as uuid } from '@lukeed/uuid'
 
 export async function handle ({ request, resolve }) {
-	console.log('handle');
 	const cookies = cookie.parse(request.headers.cookie || '')
 	request.locals.userId = cookies.userId || uuid()
 
@@ -26,9 +25,8 @@ export async function handle ({ request, resolve }) {
 
 export function getSession (request) {
 	console.log('getSession');
-	const {userId} = cookie.parse(request.headers.cookie || '')
 	return {
-		userId,
+		userId: request.locals.userId,
 		faunadb: {
 			domain: process.env.FAUNADB_DOMAIN,
 			port: process.env.FAUNADB_PORT,

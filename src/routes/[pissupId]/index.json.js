@@ -26,7 +26,6 @@ export const get = async (request) => {
 
 // TODO: Add those type annotation things?
 export const post = async (request) => {
-	const {userId} = cookie.parse(request.headers.cookie || '');
 	// TODO: Use FormData instead.
 	const json = JSON.parse(request.body)
 
@@ -36,7 +35,7 @@ export const post = async (request) => {
 			{
 				data: {
 					pissheads: {
-						[userId]: {
+						[request.locals.userId]: {
 							name: json.name,
 						}
 					},
@@ -54,7 +53,6 @@ export const post = async (request) => {
 }
 
 export const put = async (request) => {
-	const {userId} = cookie.parse(request.headers.cookie || '');
 	const pissupId = request.params.pissupId
 	const reference = toDatabaseId(pissupId)
 	// TODO: Use FormData instead.
@@ -66,7 +64,7 @@ export const put = async (request) => {
 			{
 				data: {
 					pissheads: {
-						[userId]: {
+						[request.locals.userId]: {
 							dates: json.dates
 						}
 					}
@@ -81,7 +79,7 @@ export const put = async (request) => {
 }
 
 export const patch = async (request) => {
-	const {userId} = cookie.parse(request.headers.cookie || '');
+	const userId = cookie.parse(request.locals.userId);
 	const pissupId = request.params.pissupId
 	const reference = toDatabaseId(pissupId)
 	// TODO: Use FormData instead.
