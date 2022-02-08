@@ -4,9 +4,6 @@ import adapter from '@sveltejs/adapter-netlify';
 const config = {
 	kit: {
 		adapter: adapter(),
-
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
 		prerender: {
 			enabled: true,
 			entries: [ // TODO: Find out why this is necessary

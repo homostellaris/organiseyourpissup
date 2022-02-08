@@ -1,6 +1,7 @@
 <script context="module">
 	import {goto} from '$app/navigation';
 	import NavButtons from '$lib/NavButtons.svelte'
+import { get } from 'svelte/store';
 
 	export const prerender = true
 </script>
@@ -15,17 +16,17 @@
 	on:submit|preventDefault={async e => {
 		const formData = new FormData(e.target)
 		const name = formData.get('name')
+
 		const response = await fetch(
-			'/pissup.json',
+			'/create.json',
 			{
 				method: 'POST',
-				body: JSON.stringify({
-					name,
-				}),
+				body: formData
 			}
 		)
-		const json = await response.json()
-		await goto(`/${json.pissupId}/you?name=${name}`, {replaceState: true})
+
+		const pissupId = await response.text()
+		await goto(`/${pissupId}/you?name=${name}`, {replaceState: true})
 	}}
 >
 	<!-- TODO: Hardcode a few different placeholder names to select at random. -->

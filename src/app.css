@@ -1,4 +1,5 @@
 @import '@fontsource/amatic-sc';
+@import "@fontsource/port-lligat-slab";
 
 html, body, button, input, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -19,17 +20,25 @@ time, mark, audio, video {
 	padding: 0;
 }
 
-h1, p, button {
-	color: white;
-	font-size: large;
-}
-
 code {
 	font-family: monospace;
 }
 
+h1, h2, h3, p, button {
+	color: white;
+	font-size: x-large;
+}
+
 h1 {
-	font-size: 4.17rem;
+	font-size: 4.17em;
+}
+
+h2 {
+	font-size: 2.59em;
+}
+
+h3 {
+	font-size: 1.61em;
 }
 
 p {
