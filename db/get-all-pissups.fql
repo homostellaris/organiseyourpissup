@@ -1,4 +1,4 @@
 Map(
-	Paginate(Documents(Collection('pissup'))),
+	Paginate(Documents(Collection('pissup')), {size: 10000}),
 	Lambda(x => Get(x))
 )

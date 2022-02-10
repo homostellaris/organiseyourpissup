@@ -87,7 +87,6 @@
     flex-direction: column;
     flex-grow: 1;
     justify-content: center;
-    height: 100%;
     margin: auto;
     max-width: 900px;
   }
@@ -115,7 +114,6 @@
 
   .beer {
     position: relative;
-    height: 400px;
     overflow: hidden;
     background: linear-gradient(
       to right,

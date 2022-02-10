@@ -1,24 +1,22 @@
 <script>
-	import faunadb from 'faunadb'
-	import {goto} from '$app/navigation'
-	import {page, session} from '$app/stores'
+	import { goto } from '$app/navigation'
+	import { page,session } from '$app/stores'
+	import Datepicker from '$lib/Datepicker.svelte'
+	import { toDatabaseId } from '$lib/id'
 	import NavButtons from '$lib/NavButtons.svelte'
-	import {onMount} from 'svelte'
-	import {toDatabaseId} from '$lib/id'
-	import Datepicker from "$lib/Datepicker.svelte"
-	import {getContext} from 'svelte'
+	import Pissheads from '$lib/Pissheads.svelte'
+	import faunadb from 'faunadb'
+	import { onMount } from 'svelte'
+	import StreamingStatus from '$lib/StreamingStatus.svelte'
+	import PissheadInviter from '$lib/PissheadInviter.svelte'
 
-	export let user = getContext('user')
+	export let user
 	let dates = user.dates || []
 
 	let status = 'Not started'
 	let pissheads = []
 
-	let inviteUrl = ''
-
 	onMount(() => {
-		inviteUrl = document.location.origin
-
 		const client = new faunadb.Client({...$session.faunadb})
 		const q = faunadb.query
 
@@ -53,13 +51,11 @@
 </script>
 
 <h3>Here are the other pissheads!</h3>
-<div class="streaming-status">{status}</div>
-{#each pissheads as pisshead}
-	<div class="pisshead">{pisshead.name}</div>
-{/each}
+<StreamingStatus {status}/>
+<Pissheads {pissheads}/>
 
 <h3>Use this link to invite more.</h3>
-<a href="#">{inviteUrl}/invite</a>
+<PissheadInviter/>
 
 <h3>Here's everyone's availability, choose a date!</h3>
 <form

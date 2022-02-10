@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "svelte-kit build",
+    "createFixtures": "fauna import --path ./db/pissup.json --append",
     "dev": "./habitat.sh svelte-kit dev",
     "db": "docker run --rm --name faunadb -p 8443:8443 -v organiseyourpissup:/var/lib/faunadb fauna/faunadb",
     "db:init": "fauna eval --file db/init.fql",
