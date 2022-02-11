@@ -1,7 +1,7 @@
 import cookie from 'cookie'
 import { v4 as uuid } from '@lukeed/uuid'
 
-export async function handle ({ event, resolve }) {
+export async function handle ({event, resolve}) {
 	console.log('handle')
 	const cookieHeader = event.request.headers.get('cookie')
 	const cookies = cookie.parse(cookieHeader || '')
@@ -25,10 +25,10 @@ export async function handle ({ event, resolve }) {
 	return response;
 };
 
-export function getSession (request) {
+export function getSession (event) {
 	console.log('getSession');
 	return {
-		userId: request.locals.userId,
+		userId: event.locals.userId,
 		faunadb: {
 			domain: process.env.FAUNADB_DOMAIN,
 			port: process.env.FAUNADB_PORT,
