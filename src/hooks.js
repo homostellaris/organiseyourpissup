@@ -13,13 +13,13 @@ export async function handle ({event, resolve}) {
 	}
 
 	const response = await resolve(event)
-
 	if (!cookies.userId) {
 		// if this is the first time the user has visited this app,
 		// set a cookie so that we recognise them when they return
-		response.headers['set-cookie'] = cookie.serialize('userId', event.locals.userId, {
+		const userIdCookie = cookie.serialize('userId', event.locals.userId, {
 			path: '/',
 		})
+		response.headers.set('set-cookie', userIdCookie)
 	}
 
 	return response;

@@ -3,22 +3,20 @@
 
 	const inviteUrl = $page.url.origin + '/' + $page.params.pissupId + '/invite'
 
-	function copy () {
-		document.getElementById('invite-url').select()
-		document.execCommand('copy')
+	async function copy() {
+		if (!navigator.clipboard) {
+			alert('Copy this link: ' + inviteUrl)
+			return;
+		}
+		await navigator.clipboard.writeText(inviteUrl)
+		alert('Invite link copied to clipboard')
 	}
 </script>
 
-<div class="pisshead-inviter">
-	<input id="invite-url" type="text" value={inviteUrl}/><button on:click={copy}>copy link</button>
-</div>
+<button on:click={copy}>THIS BUTTON</button>
 
 <style>
-	.pisshead-inviter {
-		margin: 1rem;
-	}
-
-	.pisshead-inviter input {
-		width: 20rem;
+	button {
+		background-color: greenyellow;
 	}
 </style>

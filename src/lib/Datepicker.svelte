@@ -4,9 +4,11 @@
 
 <script>
 	export let selected
+	export let disabledTo = -1
+
 	const today = new Date()
 	const yesterday = new Date(today)
-	yesterday.setDate(yesterday.getDate() - 1)
+	yesterday.setDate(yesterday.getDate() + disabledTo)
 </script>
 
 <div class="datepicker">

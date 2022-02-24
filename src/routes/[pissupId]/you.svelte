@@ -1,15 +1,17 @@
 <script>
 	import Datepicker from "$lib/Datepicker.svelte"
 	import {goto} from '$app/navigation'
-	import NavButtons from '$lib/NavButtons.svelte'
+	import Onwards from '$lib/Onwards.svelte'
 	import {page} from '$app/stores'
 
 	export let user
-	export let pissup
-
 	let name = $page.url.searchParams.get('name') || user.name
-	let dates = user.dates || []
+	let dates = user.dates.map(date => new Date(date).getTime()) || []
 </script>
+
+<svelte:head>
+	<title>You</title>
+</svelte:head>
 
 
 <!-- TODO: Should I use stores or session here instead of the query param? -->
@@ -18,6 +20,7 @@
 <h1>Alright {name}, when can you do?</h1>
 <!-- svelte-ignore missing-declaration -->
 <form
+	id="you"
 	on:submit|preventDefault={async _ => {
 		await fetch(
 			`/${$page.params.pissupId}/you`,
@@ -32,5 +35,5 @@
 	}}
 >
 	<Datepicker bind:selected={dates}/>
-	<NavButtons position={'center'}/>
 </form>
+<Onwards form="you"/>

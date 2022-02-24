@@ -1,5 +1,6 @@
 import faunadb from 'faunadb'
-import {toDatabaseId, toPissupId} from '$lib/id'
+import {toDatabaseId} from '$lib/id'
+import convertDatesToStrings from '$lib/convertDatesToStrings'
 
 const q = faunadb.query
 
@@ -10,13 +11,13 @@ const client = new faunadb.Client({
 	secret: process.env.FAUNADB_SERVER_SECRET,
 })
 
-export const get = async ({params, locals}) => {
+export async function get ({params, locals}) {
 	const pissupId = params.pissupId
 	const reference = toDatabaseId(pissupId)
 	const response = await client.query(
 		q.Get(q.Ref(q.Collection('pissup'), reference))
 	)
-	const pissup = response.data
+	const pissup = convertDatesToStrings(response.data)
 	const user = pissup.pissheads[locals.userId]
 	
 	return {
@@ -28,18 +29,18 @@ export const get = async ({params, locals}) => {
 	}
 }
 
-export const patch = async (request) => {
-	const pissupId = request.params.pissupId
+export async function patch ({params, request}) {
+	const pissupId = params.pissupId
 	const reference = toDatabaseId(pissupId)
 	// TODO: Use FormData instead.
-	const json = JSON.parse(request.body)
+	const {decision} = await request.json()
 
-	const response = await client.query(
+	await client.query(
 		q.Update(
 			q.Ref(q.Collection('pissup'), reference),
 			{
 				data: {
-					decision: '2021-01-06'
+					decision: q.Date(new Date(decision).toISOString().split('T')[0])
 				}
 			}
 		)
