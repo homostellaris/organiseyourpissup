@@ -3,7 +3,20 @@
 
 	const inviteUrl = $page.url.origin + '/' + $page.params.pissupId + '/invite'
 
-	async function copy() {
+	async function share () {
+		try {
+			await navigator.share({
+				title: "Organise Your Pissup",
+				text: "You've been invited to a pissup!",
+				url: inviteUrl,
+			})
+		} catch (error) {
+			console.warn('Unable to use native sharing', error)
+			copy()
+		}
+	}
+
+	async function copy () {
 		if (!navigator.clipboard) {
 			alert('Copy this link: ' + inviteUrl)
 			return;
@@ -13,7 +26,7 @@
 	}
 </script>
 
-<button on:click={copy}>THIS BUTTON</button>
+<button on:click={share}>THIS BUTTON</button>
 
 <style>
 	button {
