@@ -1,3 +1,7 @@
+<script context="module">
+	import Retreat from "$lib/Retreat.svelte"
+</script>
+
 <script>
 	export let pissup
 	let decision
@@ -10,3 +14,5 @@
 
 <h1>You're getting pissed on {decision} 🍻</h1>
 <p>Remember alcohol is a privilege not a right, please drink responsibly 💚</p>
+
+<Retreat back="everyone"/>
