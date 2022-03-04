@@ -18,7 +18,7 @@
 		const name = formData.get('name')
 
 		await fetch(
-			`/${$page.params.pissupId}`,
+			'.',
 			{
 				method: 'PUT',
 				body: JSON.stringify({
@@ -27,7 +27,7 @@
 			}
 		)
 
-		await goto(`/${$page.params.pissupId}/you?name=${name}`, {replaceState: true})
+		await goto(`you?name=${name}`, {replaceState: true})
 	}}
 >
 	<!-- TODO: Hardcode a few different placeholder names to select at random. -->

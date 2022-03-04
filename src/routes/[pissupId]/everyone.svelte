@@ -60,7 +60,7 @@
 		}
 
 		startStream()
-		status = 'Started live-streaming'
+		status = 'Started live-streaming 📡'
 	})
 </script>
 
@@ -88,7 +88,7 @@
 		const decision = formData.get('best-dates')
 
 		await fetch(
-			`/${$page.params.pissupId}/everyone`,
+			'everyone',
 			{
 				method: 'PATCH',
 				body: JSON.stringify({
@@ -96,13 +96,13 @@
 				}),
 			}
 		)
-		goto(`/${$page.params.pissupId}/decision`)
+		goto('decision')
 	}}
 >
 	<BestDates {pissheads} selected={decision}/>
 </form>
 <div>
-	<Retreat back={`/${$page.params.pissupId}/you`}/>
+	<Retreat back="you"/>
 	<Onwards form="everyone"/>
 </div>
 

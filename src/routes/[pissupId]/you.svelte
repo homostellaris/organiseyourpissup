@@ -23,7 +23,7 @@
 	id="you"
 	on:submit|preventDefault={async _ => {
 		await fetch(
-			`/${$page.params.pissupId}/you`,
+			'you',
 			{
 				method: 'PUT',
 				body: JSON.stringify({
@@ -31,7 +31,7 @@
 				}),
 			}
 		)
-		goto(`/${$page.params.pissupId}/everyone`)
+		goto('everyone')
 	}}
 >
 	<Datepicker bind:selected={dates}/>
