@@ -18,9 +18,6 @@
 <Retreat back="everyone"/>
 
 <style>
-	h1 {
-		text-align: center;
-	}
 	#decision {
 		white-space: nowrap;
 	}

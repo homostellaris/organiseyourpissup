@@ -26,7 +26,7 @@
 	}
 </script>
 
-<button on:click={share}>THIS BUTTON</button>
+<button on:click={share}>COPY INVITE LINK</button>
 
 <style>
 	button {
