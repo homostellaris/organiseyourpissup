@@ -13,6 +13,6 @@
 </script>
 
 <h1>You're getting pissed on {decision} 🍻</h1>
-<p>Remember alcohol is a privilege not a right, please drink responsibly 💚</p>
+<p>Please drink responsibly 💚</p>
 
 <Retreat back="everyone"/>
