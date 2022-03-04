@@ -12,7 +12,16 @@
 	})
 </script>
 
-<h1>You're getting pissed on {decision} 🍻</h1>
+<h1>You're getting pissed on <span id="decision">{decision} 🍻</span></h1>
 <p>Please drink responsibly 💚</p>
 
 <Retreat back="everyone"/>
+
+<style>
+	h1 {
+		text-align: center;
+	}
+	#decision {
+		white-space: nowrap;
+	}
+</style>

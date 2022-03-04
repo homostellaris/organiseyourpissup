@@ -40,6 +40,7 @@
 		--praecox-calendar-custom-background: rgba(255, 255, 255, 0.8);
 		--praecox-calendar-custom-weekend-color: none;
 
+		font-size: 1rem;
 		margin: 1rem;
 	}
 </style>

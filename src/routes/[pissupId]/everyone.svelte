@@ -72,9 +72,9 @@
 
 <h2>
 	{pissheadsCount > 1 ? 'Here are the other pissheads!' : "You are the only pisshead here..."}
-	To invite more click<PissheadInviter/>
 </h2>
 <Pissheads {pissheads}/>
+<PissheadInviter/>
 
 <!-- <h2>Here's everyone's availability</h2>
 <Datepicker disabledTo={10000} selected={dates}/> -->
