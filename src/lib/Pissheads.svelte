@@ -6,8 +6,11 @@
 	export let pissheads
 	export let selected
 
-	addAvatars(pissheads)
-	let pissheadArray = Object.entries(pissheads)
+	let pissheadArray
+	$: {
+		addAvatars(pissheads)
+		pissheadArray = Object.entries(pissheads)
+	}
 </script>
 
 <div class="pissheads">
