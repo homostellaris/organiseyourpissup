@@ -49,6 +49,10 @@
 				.on('version', version => {
 					console.log('version')
 					pissup = version.document.data
+
+					const decisionUpdated = pissup.decision && pissup.decision !== decision
+					if (decisionUpdated) goto('decision')
+
 					status = 'Updated: someone joined the party!'
 				})
 				.on('error', error => {
@@ -60,7 +64,7 @@
 		}
 
 		startStream()
-		status = 'Started live-streaming 📡'
+		status = 'Live-streaming updates 📡'
 	})
 </script>
 
