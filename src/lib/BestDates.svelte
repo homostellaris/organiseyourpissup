@@ -14,7 +14,7 @@
 		addAvatars(pissheads)
 		pissheadsByDate = {}
 		for (const [_, pisshead] of Object.entries(pissheads)) {
-			for (const date of pisshead.dates) {
+			for (const date of pisshead.dates || []) {
 				const hasDateKey = date in pissheadsByDate
 				if (!hasDateKey) pissheadsByDate[date] = new Set()
 				pissheadsByDate[date].add(pisshead)
