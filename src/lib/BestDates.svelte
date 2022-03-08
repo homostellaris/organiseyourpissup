@@ -21,9 +21,11 @@
 			}
 		}
 		bestDates = Object.entries(pissheadsByDate)
-			.sort(([_, pissheadsOne], [__, pissheadsTwo]) => {
+			.sort(([dateOne, pissheadsOne], [dateTwo, pissheadsTwo]) => {
 				if (pissheadsOne.size < pissheadsTwo.size) return 1
 				if (pissheadsOne.size > pissheadsTwo.size) return -1
+				if (dateOne > dateTwo) return 1
+				if (dateOne < dateTwo) return -1
 				return 0
 			})
 			.slice(0, 10)
