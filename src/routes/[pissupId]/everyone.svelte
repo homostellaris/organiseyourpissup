@@ -50,7 +50,9 @@
 					console.log('version')
 					pissup = version.document.data
 
+					console.log(pissup.decision, decision)
 					const decisionUpdated = pissup.decision && pissup.decision !== decision
+					console.log(decisionMade)
 					if (decisionUpdated) goto('decision')
 
 					status = 'Updated: someone joined the party!'
@@ -83,31 +85,41 @@
 <!-- <h2>Here's everyone's availability</h2>
 <Datepicker disabledTo={10000} selected={dates}/> -->
 
-<h2>Choose a date</h2>
-<!-- svelte-ignore missing-declaration -->
-<form
-	id="everyone"
-	on:submit|preventDefault={async e => {
-		const formData = new FormData(e.target)
-		const decision = formData.get('best-dates')
+{#if pissheadsCount > 1}
+	<h2>Choose a date</h2>
+	<!-- svelte-ignore missing-declaration -->
+	<form
+		id="everyone"
+		on:submit|preventDefault={async e => {
+			const formData = new FormData(e.target)
+			const decision = formData.get('best-dates')
 
-		await fetch(
-			'everyone',
-			{
-				method: 'PATCH',
-				body: JSON.stringify({
-					decision,
-				}),
-			}
-		)
-		goto('decision')
-	}}
->
-	<BestDates {pissheads} selected={decision}/>
-</form>
+			await fetch(
+				'everyone',
+				{
+					method: 'PATCH',
+					body: JSON.stringify({
+						decision,
+					}),
+				}
+			)
+			goto('decision')
+		}}
+	>
+		<BestDates {pissheads} selected={decision}/>
+	</form>
+{:else}
+	<h2>Next steps</h2>
+	<ol>
+		<li>Invite more pissheads 👆</li>
+		<li>Choose a date 📅</li>
+		<li>You're done! ✅</li>
+	</ol>
+{/if}
+
 <div>
 	<Retreat back="you"/>
-	<Onwards form="everyone"/>
+	<Onwards disabled={pissheadsCount < 2 || !decision} form="everyone"/>
 </div>
 
 <style>
