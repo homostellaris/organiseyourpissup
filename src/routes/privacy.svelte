@@ -1,1 +1,5 @@
+<svelte:head>
+	<title>Privacy</title>
+</svelte:head>
+
 <p>We will delete all your data automatically after 30 days (so make sure you finish organising your pissup within that time!)</p>
