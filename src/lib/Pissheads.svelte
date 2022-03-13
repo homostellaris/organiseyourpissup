@@ -30,11 +30,15 @@
 </div>
 
 <style>
+	.pissheads {
+		text-align: center;
+	}
+
 	.pisshead {
 		display: inline-block;
 		margin: 1rem;
 		text-align: center;
-		width: 5rem;
+		width: 3rem;
 	}
 
 	.avatar {
