@@ -35,16 +35,16 @@
         bubble.classList.add("bubble");
 
         bubble.style = `
-				width: ${bubbleSize}px;
-				height: ${bubbleSize}px;
-				left: ${xPos}%;
-				top: ${yPos}%;
-				-webkit-animation-delay: ${bubbleDelay}ms;
-				-webkit-animation-duration: ${bubbleSpeed}ms;
-				-webkit-filter: blur(${bubbleBlur}px);
-				filter: blur(${bubbleBlur}px);
-				opacity: ${bubbleOpacity};
-			`;
+          width: ${bubbleSize}px;
+          height: ${bubbleSize}px;
+          left: ${xPos}%;
+          top: ${yPos}%;
+          -webkit-animation-delay: ${bubbleDelay}ms;
+          -webkit-animation-duration: ${bubbleSpeed}ms;
+          -webkit-filter: blur(${bubbleBlur}px);
+          filter: blur(${bubbleBlur}px);
+          opacity: ${bubbleOpacity};
+			  `;
 
         document.getElementsByClassName("beer")[0].append(bubble);
       }
@@ -66,14 +66,18 @@
 </div>
 {/key} -->
 
-<div class="beer container">
-  <main>
-    <slot />
-  </main>
-  <Footer />
+<div class="beer">
 </div>
+<main class="container">
+  <slot />
+</main>
+<Footer />
 
 <style>
+  :global(body) {
+    position: relative;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
@@ -113,7 +117,7 @@
   }
 
   .beer {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     background: linear-gradient(
       to right,
@@ -123,6 +127,9 @@
       rgba(232, 124, 0, 1) 81%,
       rgba(220, 112, 0, 1) 100%
     );
+    height: 100%;
+    width: 100%;
+    z-index: -1;
   }
 
   :global(.bubble) {
