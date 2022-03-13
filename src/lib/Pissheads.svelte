@@ -32,7 +32,6 @@
 <style>
 	.pisshead {
 		display: inline-block;
-		font-size: x-large;
 		margin: 1rem;
 		text-align: center;
 		width: 5rem;
