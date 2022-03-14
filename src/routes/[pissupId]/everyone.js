@@ -18,6 +18,7 @@ export async function get ({params, locals}) {
 		q.Get(q.Ref(q.Collection('pissup'), reference))
 	)
 	const pissup = convertDatesToStrings(response.data)
+	pissup.decision = pissup.decision.value
 	const user = pissup.pissheads[locals.userId]
 	
 	return {

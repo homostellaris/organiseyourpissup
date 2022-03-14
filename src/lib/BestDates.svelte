@@ -37,7 +37,7 @@
 	on:click={event => {
 		const tableRow = event.composedPath().find(node => node.tagName === 'TR')
 		const radioInput = tableRow.getElementsByTagName('input')[0]
-		radioInput.checked = true
+		selected = radioInput.value
 	}}>
 	<thead>
 		<tr>
@@ -52,7 +52,7 @@
 		{#each bestDates as [date, pissheadsForDate], i}
 			<tr>
 				<td>
-					<input checked={date === selected} name="best-dates" type="radio" value={date}/>
+					<input bind:group={selected} name="best-dates" type="radio" value={date}/>
 				</td>
 				<td>{i + 1}</td>
 				<td>

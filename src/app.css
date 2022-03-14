@@ -63,7 +63,12 @@ li {
 
 button {
 	color: black;
+	cursor: pointer;
 	margin: 1em;
+}
+
+button:disabled {
+	filter: saturate(30%);
 }
 
 input, button {

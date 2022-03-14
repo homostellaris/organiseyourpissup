@@ -18,8 +18,7 @@
 	let pissheads
 	let pissheadsCount
 	// let dates
-	let decision
-	$: decision = pissup.decision ? pissup.decision.value : null
+	let decision = pissup.decision ? pissup.decision : null
 	let status = 'Not started'
 
 	$: pissheads = pissup.pissheads
@@ -50,9 +49,7 @@
 					console.log('version')
 					pissup = version.document.data
 
-					console.log(pissup.decision, decision)
 					const decisionUpdated = pissup.decision && pissup.decision !== decision
-					console.log(decisionMade)
 					if (decisionUpdated) goto('decision')
 
 					status = 'Updated: someone joined the party!'
@@ -106,7 +103,7 @@
 			goto('decision')
 		}}
 	>
-		<BestDates {pissheads} selected={decision}/>
+		<BestDates {pissheads} bind:selected={decision}/>
 	</form>
 {:else}
 	<h2>Next steps</h2>
