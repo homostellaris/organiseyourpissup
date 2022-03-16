@@ -10,4 +10,10 @@
 		top: 1rem;
 		right: 1rem;
 	}
+
+	@media (max-width: 900px) {
+		.streaming-status {
+			position: unset;
+		}
+	}
 </style>
