@@ -100,16 +100,18 @@
 		cursor: pointer;
 	}
 
-	tbody tr::before {
-		content: "👉";
-		position: absolute;
-		left: -2rem;
-		visibility: hidden;
+	@media (min-width: 900px) {
+		tbody tr::before {
+			content: "👉";
+			position: absolute;
+			left: -2rem;
+			visibility: hidden;
 
-	}
+		}
 
-	tbody tr:hover::before {
-		content: "👉";
-		visibility: visible;
+		tbody tr:hover::before {
+			content: "👉";
+			visibility: visible;
+		}
 	}
 </style>
