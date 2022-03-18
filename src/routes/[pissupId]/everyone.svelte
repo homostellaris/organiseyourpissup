@@ -17,7 +17,6 @@
 
 	let pissheads
 	let pissheadsCount
-	let pissheadsWithDatesCount
 	// let dates
 	let decision = pissup.decision ? pissup.decision : null
 	let status = 'Not started'
@@ -85,7 +84,7 @@
 <!-- <h2>Here's everyone's availability</h2>
 <Datepicker disabledTo={10000} selected={dates}/> -->
 
-{#if pissheadsCount > 1}
+{#if pissheadsWithDates.length < 2}
 	<h2>Choose a date</h2>
 	<!-- svelte-ignore missing-declaration -->
 	<form
