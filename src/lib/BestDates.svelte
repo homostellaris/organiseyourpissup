@@ -90,17 +90,17 @@
 		padding: 0.61rem;
 	}
 
-	table thead tr::before {
-		/* Hack required otherwise the before pseudo element nudges the whole table over to the right as though its added a new td element. */
-    	content: ""; 
-	}
-
 	tbody tr {
 		position: relative;
 		cursor: pointer;
 	}
 
 	@media (min-width: 900px) {
+		table thead tr::before {
+			/* Hack required otherwise the before pseudo element nudges the whole table over to the right as though its added a new td element. */
+			content: ""; 
+		}
+
 		tbody tr::before {
 			content: "👉";
 			position: absolute;
