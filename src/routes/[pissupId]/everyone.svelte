@@ -49,7 +49,7 @@
 				})
 				.on('version', version => {
 					console.log('version')
-					pissup = version.document.data
+					pissup = convertDatesToStrings(version.document.data)
 
 					const decisionUpdated = pissup.decision && pissup.decision !== decision
 					if (decisionUpdated) goto('decision')
