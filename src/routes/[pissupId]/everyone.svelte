@@ -17,12 +17,15 @@
 
 	let pissheads
 	let pissheadsCount
+	let pissheadsWithDatesCount
 	// let dates
 	let decision = pissup.decision ? pissup.decision : null
 	let status = 'Not started'
 
 	$: pissheads = pissup.pissheads
 	$: pissheadsCount = Object.values(pissheads).length
+	$: pissheadsWithDates = Object.values(pissheads)
+		.filter(pisshead => pisshead.dates && pisshead.dates.length)
 	// $: dates = Object.entries(pissheads)
 	// 	.filter(([pissheadId, _]) => selected ? pissheadId === selected : true)
 	// 	.map(([_, pisshead]) => pisshead.dates)
@@ -116,7 +119,7 @@
 
 <div>
 	<Retreat back="you"/>
-	<Onwards disabled={pissheadsCount < 2 || !decision} form="everyone"/>
+	<Onwards disabled={pissheadsWithDates.length < 2 || !decision} form="everyone"/>
 </div>
 
 <style>

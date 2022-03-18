@@ -68,10 +68,12 @@
 
 <div class="beer">
 </div>
-<main class="container">
-  <slot />
-</main>
-<Footer />
+<div class="container">
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</div>
 
 <style>
   :global(body) {
