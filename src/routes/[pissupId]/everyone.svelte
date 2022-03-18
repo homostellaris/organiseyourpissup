@@ -84,7 +84,7 @@
 <!-- <h2>Here's everyone's availability</h2>
 <Datepicker disabledTo={10000} selected={dates}/> -->
 
-{#if pissheadsWithDates.length < 2}
+{#if pissheadsWithDates.length > 1}
 	<h2>Choose a date</h2>
 	<!-- svelte-ignore missing-declaration -->
 	<form
