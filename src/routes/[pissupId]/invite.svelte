@@ -1,7 +1,6 @@
 <script context="module">
 	import {goto} from '$app/navigation'
 	import Onward from '$lib/Onwards.svelte'
-	import {page} from '$app/stores'
 
 	export const prerender = true
 </script>
@@ -18,12 +17,10 @@
 		const name = formData.get('name')
 
 		await fetch(
-			'.',
+			'./invite.json',
 			{
-				method: 'PUT',
-				body: JSON.stringify({
-					name,
-				}),
+				method: 'POST',
+				body: formData
 			}
 		)
 

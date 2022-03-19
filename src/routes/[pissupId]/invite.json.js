@@ -10,11 +10,15 @@ const client = new faunadb.Client({
 	secret: process.env.FAUNADB_SERVER_SECRET,
 })
 
-export async function put ({locals, params, request}) {
+export async function post ({locals, params, request}) {
 	const pissupId = params.pissupId
 	const reference = toDatabaseId(pissupId)
 
-	const {name} = await request.json()
+	console.log('HELLO')
+	const data = await request.formData()
+	console.log(data)
+	const name = data.get('name')
+
 
 	await client.query(
 		q.Update(
