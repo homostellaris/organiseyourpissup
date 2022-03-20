@@ -10,6 +10,7 @@
 </svelte:head>
 
 <h1>You've been invited to a pissup</h1>
+<p>Let's start with your name</p>
 <!-- svelte-ignore missing-declaration -->
 <form
 	on:submit|preventDefault={async e => {

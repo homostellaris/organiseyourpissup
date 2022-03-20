@@ -9,7 +9,8 @@
 	<title>Home</title>
 </svelte:head>
 
-<h1>Alright pisshead, let's start with your name.</h1>
+<h1>Alright pisshead</h1>
+<p>Let's start with your name</p>
 <!-- svelte-ignore missing-declaration -->
 <form
 	on:submit|preventDefault={async e => {
