@@ -31,6 +31,8 @@
     "@fontsource/fira-mono": "^4.5.0",
     "@fontsource/port-lligat-slab": "^4.5.2",
     "@lukeed/uuid": "^2.0.0",
+    "@sentry/browser": "^6.19.1",
+    "@sentry/tracing": "^6.19.1",
     "cookie": "^0.4.1",
     "faunadb": "^4.5.2",
     "plausible-tracker": "^0.3.5",

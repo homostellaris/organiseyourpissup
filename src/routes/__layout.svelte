@@ -6,6 +6,8 @@
 //   import { bubble } from "svelte/internal";
   import {onMount} from "svelte"
   import Plausible from 'plausible-tracker'
+  import * as Sentry from "@sentry/browser";
+  import { BrowserTracing } from "@sentry/tracing"
 
 	export const prerender = true
 </script>
@@ -26,6 +28,12 @@
       plausible = Plausible()
       plausible.enableAutoPageviews()
       plausible.enableAutoOutboundTracking()
+
+      Sentry.init({
+        dsn: "https://b4f94efd339c498cb013c30391666fb7@o1174206.ingest.sentry.io/6270021",
+        integrations: [new BrowserTracing()],
+        tracesSampleRate: 1.0,
+      })
     }
 
     function createBubbles(bubbleCount) {
