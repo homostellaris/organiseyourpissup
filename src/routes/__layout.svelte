@@ -1,9 +1,11 @@
 <script context="module">
+  import {dev} from '$app/env'
   import "../app.css"
   import Footer from "$lib/Footer.svelte"
 //   import { fly } from "svelte/transition";
 //   import { bubble } from "svelte/internal";
   import {onMount} from "svelte"
+  import Plausible from 'plausible-tracker'
 
 	export const prerender = true
 </script>
@@ -16,7 +18,16 @@
     MAX_ANIMATION_DURATION: 8000,
   };
 
+  let plausible
+
   onMount(() => {
+    if (!dev) {
+      // TODO: Raise a PR to define exports properly so this works with Vite.
+      plausible = Plausible()
+      plausible.enableAutoPageviews()
+      plausible.enableAutoOutboundTracking()
+    }
+
     function createBubbles(bubbleCount) {
       for (let i = 0; i <= bubbleCount; i++) {
         const xPos = Math.floor(Math.random() * 100 + 1);

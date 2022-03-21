@@ -1,5 +1,5 @@
 <script context="module">
-	import {goto} from '$app/navigation';
+	import {goto} from '$app/navigation'
 	import Onward from '$lib/Onwards.svelte'
 
 	export const prerender = true
