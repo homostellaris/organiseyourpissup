@@ -23,16 +23,21 @@
 <style>
 	:global(.calendar *) {
 		font-family: "Port Lligat Slab";
+		font-size: 21px;
 	}
 	:global(.calendar-date) {
 		border-radius: 25px;
+	}
+
+	:global(.calendar-dayOfWeek) {
+		font-size: 16px;
 	}
 
 	.datepicker {
 		--praecox-calendar-custom-font-family: 'Port Lligat Slab', serif;
 		--praecox-calendar-custom-number-font-family: 'Port Lligat Slab', cursive;
 		--praecox-calendar-custom-font-main-color: #181818;
-		--praecox-calendar-custom-border-radius: 1rem;
+		--praecox-calendar-custom-border-radius: 25px;
 		--praecox-calendar-custom-width: 320px;
 		--praecox-calendar-custom-height: 320px;
 		--praecox-calendar-custom-inner-width: 230px;
@@ -40,7 +45,6 @@
 		--praecox-calendar-custom-background: rgba(255, 255, 255, 0.8);
 		--praecox-calendar-custom-weekend-color: none;
 
-		font-size: 1rem;
-		margin: 1rem;
+		margin: 21px;
 	}
 </style>
