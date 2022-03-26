@@ -1,7 +1,11 @@
 <script>
 	import { page } from '$app/stores'
+	import {getContext} from 'svelte'
+
+	const {getAnalytics} = getContext('analytics')
 
 	const inviteUrl = $page.url.origin + '/' + $page.params.pissupId + '/invite'
+	let inviteDialogText
 
 	async function share () {
 		try {
@@ -10,36 +14,50 @@
 				text: "You've been invited to a pissup!",
 				url: inviteUrl,
 			})
+			trackShareInviteLink('native')
 		} catch (error) {
 			console.warn('Unable to use native sharing', error)
 			if (error.name === 'AbortError') return // If we try to fallback to 'copy' after this it results in a NotAllowedErorr. I'm guesing this is because when the user aborts share it resets Safari's concept of if is a valid and safe clipboard operation triggered by a user interaction (see https://webkit.org/blog/10247/new-webkit-features-in-safari-13-1/).
-			await copy()
+
+			try {
+				await copy()
+				inviteDialogText = "This link has been copied to your clipboard"
+				trackShareInviteLink('auto copy with dialog')
+			} catch (error) {
+				// One example of when this would happen is in some Android Webviews that don't provide copy permissions.
+				console.warn('Unable to copy to clipboard', error)
+				inviteDialogText = "Please copy this link"
+				trackShareInviteLink('manual copy with dialog')
+			}
+			displayInviteUrlDialog(inviteDialogText)
 		}
 	}
 
 	async function copy () {
-		if (!navigator.clipboard) {
-			displayInviteUrlDialog()
-			return;
-		}
-		try {
-			await navigator.clipboard.writeText(inviteUrl)
-			alert('Invite link copied to clipboard') // TODO: Stop using this as its not supported in some mobile scenarios.
-		} catch (error) {
-			// One example of when this would happen is in some Android Webviews.
-			displayInviteUrlDialog()
-		}
+		if (!navigator.clipboard) throw new Error('Navigator clipboard not available')
+		await navigator.clipboard.writeText(inviteUrl)
 	}
 
 	function displayInviteUrlDialog () {
-		console.warn('Unable to copy to clipboard', error)
 		document.getElementById('invite-dialog').showModal()
 		document.getElementById('invite-url').select()
+	}
+
+	function trackShareInviteLink (method) {
+		getAnalytics().trackEvent(
+			'Share invite link',
+			{
+				props: {
+					method,
+				}
+			}
+		)
 	}
 </script>
 
 <button on:click={share}>SHARE INVITE LINK</button>
 <dialog id="invite-dialog">
+	<p>{inviteDialogText}</p>
 	<form method="dialog">
 		<input id="invite-url" readonly type="url" value={inviteUrl}>
 		<button value="default">Done</button>

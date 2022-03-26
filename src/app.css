@@ -24,6 +24,11 @@ code {
 	font-family: monospace;
 }
 
+dialog {
+	background-color: var(--beer);
+	border-radius: 0.2em;
+}
+
 html {
 	font-size: calc(1em + 0.5vw);
 }

@@ -1,13 +1,13 @@
 <script context="module">
   import {dev} from '$app/env'
-  import "../app.css"
-  import Footer from "$lib/Footer.svelte"
+  import '../app.css'
+  import Footer from '$lib/Footer.svelte'
 //   import { fly } from "svelte/transition";
 //   import { bubble } from "svelte/internal";
-  import {onMount} from "svelte"
+  import {onMount, setContext} from 'svelte'
   import Plausible from 'plausible-tracker'
-  import * as Sentry from "@sentry/browser";
-  import { BrowserTracing } from "@sentry/tracing"
+  import * as Sentry from '@sentry/browser'
+  import {BrowserTracing} from '@sentry/tracing'
 
 	export const prerender = true
 </script>
@@ -21,20 +21,22 @@
   };
 
   let plausible
+  setContext('analytics', {
+    getAnalytics: () => plausible
+  })
 
   onMount(() => {
-    if (!dev) {
-      // TODO: Raise a PR to define exports properly so this works with Vite.
-      plausible = Plausible()
-      plausible.enableAutoPageviews()
-      plausible.enableAutoOutboundTracking()
+    Sentry.init({
+      dsn: "https://b4f94efd339c498cb013c30391666fb7@o1174206.ingest.sentry.io/6270021",
+      integrations: [new BrowserTracing()],
+      tracesSampleRate: 1.0,
+      enabled: !dev,
+    })
 
-      Sentry.init({
-        dsn: "https://b4f94efd339c498cb013c30391666fb7@o1174206.ingest.sentry.io/6270021",
-        integrations: [new BrowserTracing()],
-        tracesSampleRate: 1.0,
-      })
-    }
+    // TODO: Raise a PR to define exports properly so this works with Vite.
+    plausible = Plausible()
+    plausible.enableAutoPageviews()
+    plausible.enableAutoOutboundTracking()
 
     function createBubbles(bubbleCount) {
       for (let i = 0; i <= bubbleCount; i++) {
