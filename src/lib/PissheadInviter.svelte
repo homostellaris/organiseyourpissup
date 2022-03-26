@@ -5,7 +5,7 @@
 	const {getAnalytics} = getContext('analytics')
 
 	const inviteUrl = $page.url.origin + '/' + $page.params.pissupId + '/invite'
-	let inviteDialogText
+	let inviteDialogText = "Please copy this link"
 
 	async function share () {
 		try {
@@ -60,7 +60,7 @@
 	<p>{inviteDialogText}</p>
 	<form method="dialog">
 		<input id="invite-url" readonly type="url" value={inviteUrl}>
-		<button value="default">Done</button>
+		<button value="cancel">Done</button>
 	</form>
 </dialog>
 
