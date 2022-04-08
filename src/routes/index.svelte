@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Organise Your Pissup: The painless way to agree a date with your mates</title>
 </svelte:head>
 
 <h1>Alright pisshead</h1>
